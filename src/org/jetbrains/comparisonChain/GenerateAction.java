@@ -25,7 +25,7 @@ public class GenerateAction extends AnAction {
         }
     }
 
-    private void generateComparable(final PsiClass psiClass, final List<PsiField> fields) {
+    public void generateComparable(final PsiClass psiClass, final List<PsiField> fields) {
         new WriteCommandAction.Simple(psiClass.getProject(), psiClass.getContainingFile()) {
 
             @Override
