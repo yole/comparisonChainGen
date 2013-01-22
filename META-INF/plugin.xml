@@ -42,6 +42,10 @@
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
+      <localInspection implementationClass="org.jetbrains.comparisonChain.EqualsCompareConsistencyInspection"
+                       displayName="compareTo() inconsistent with equals()"
+                       groupName="Probable bugs"
+                       enabledByDefault="true"/>
     <!-- Add your extensions here -->
   </extensions>
 </idea-plugin>
