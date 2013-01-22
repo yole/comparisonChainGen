@@ -16,6 +16,8 @@ import java.util.List;
  * @author yole
  */
 public class GenerateAction extends AnAction {
+    public static final String COM_GOOGLE_COMMON_COLLECT_COMPARISON_CHAIN = "com.google.common.collect.ComparisonChain";
+
     public void actionPerformed(AnActionEvent e) {
         PsiClass psiClass = getPsiClassFromContext(e);
         GenerateDialog dlg = new GenerateDialog(psiClass);
@@ -57,7 +59,7 @@ public class GenerateAction extends AnAction {
     private void generateCompareTo(PsiClass psiClass, List<PsiField> fields) {
         StringBuilder builder = new StringBuilder("public int compareTo(");
         builder.append(psiClass.getName()).append(" that) {\n");
-        builder.append("return com.google.common.collect.ComparisonChain.start()");
+        builder.append("return " + COM_GOOGLE_COMMON_COLLECT_COMPARISON_CHAIN + ".start()");
         for (PsiField field : fields) {
             builder.append(".compare(this.").append(field.getName()).append(", that.");
             builder.append(field.getName()).append(")");

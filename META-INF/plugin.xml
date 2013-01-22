@@ -46,6 +46,10 @@
                        displayName="compareTo() inconsistent with equals()"
                        groupName="Probable bugs"
                        enabledByDefault="true"/>
+
+      <intentionAction>
+          <className>org.jetbrains.comparisonChain.CompareFalseFirstIntention</className>
+      </intentionAction>
     <!-- Add your extensions here -->
   </extensions>
 </idea-plugin>

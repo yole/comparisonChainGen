@@ -1,5 +1,6 @@
 package org.jetbrains.comparisonChain;
 
+import com.intellij.codeInsight.intention.IntentionAction;
 import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.projectRoots.JavaSdk;
 import com.intellij.openapi.projectRoots.Sdk;
@@ -56,5 +57,12 @@ public class GenerateTest extends LightCodeInsightFixtureTestCase {
     public void testInspection() {
         myFixture.enableInspections(EqualsCompareConsistencyInspection.class);
         myFixture.testHighlighting(true, false, false, "inspection.java");
+    }
+
+    public void testIntention() {
+        myFixture.configureByFile("before" + getTestName(false) + ".java");
+        IntentionAction intention = myFixture.findSingleIntention("Replace with compareFalseFirst()");
+        myFixture.launchAction(intention);
+        myFixture.checkResultByFile("after" + getTestName(false) + ".java");
     }
 }
